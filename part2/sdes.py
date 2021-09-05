@@ -1,7 +1,5 @@
 import genKeys
-import encryption
-import decryption
-import algo
+import algoSDES
 
 
 key='1010000010'
@@ -12,10 +10,10 @@ pt='10010111'
 # algo needs three args: t,keys,type
 # t=plaintext/cipertext
 # type=1 encryption, type=0 decryption
-ct=algo.f(pt,keys,1)
+ct=algoSDES.f(pt,keys,1)
 
 # encryption.encrypt(pt,keys)
-re=algo.f(ct,keys,0)
+re=algoSDES.f(ct,keys,0)
 
 print('pt: ',pt)
 print('ct: ',''.join(ct))
