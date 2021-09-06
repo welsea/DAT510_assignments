@@ -23,7 +23,16 @@ def f(left,right,key):
 
     p1=locate(t[:4],s0)
     p2=locate(t[4:],s1)
-    p1p2=str(bin(p1))[2:]+str(bin(p2))[2:]
+    sp1=list(bin(p1))[2:]
+    sp2=list(bin(p2))[2:]
+    add='0'
+    while len(sp1)<2:
+        sp1.insert(0,add)
+    while len(sp2)<2:
+        sp2.insert(0,add)
+        
+    p1p2=sp1+sp2
+
     p4=permutation.p(p1p2,[2,4,3,1])
     result.append(cal(p4,left))
     result.append(right)
