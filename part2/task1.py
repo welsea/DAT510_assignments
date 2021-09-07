@@ -1,5 +1,4 @@
-import genKeys
-import algoSDES
+import SDES
 
 #task 1
 table=[]
@@ -11,7 +10,7 @@ for i in range(0,len(raw_key)):
     tt=[]
     tt.append(raw_key[i])
     tt.append(pt[i])
-    re=algoSDES.f(tt[1],genKeys.gen2keys(tt[0]),1)
+    re=SDES.f(tt[1],tt[0],1)
     tt.append(''.join(re))
     table.append(tt)
 
@@ -22,7 +21,7 @@ for i in range(0,len(raw_key2)):
     tt=[]
     tt.append(raw_key2[i])
     tt.append(ct[i])
-    re=algoSDES.f(tt[1],genKeys.gen2keys(tt[0]),0)
+    re=SDES.f(tt[1],tt[0],0)
     tt.insert(1,''.join(re))
     table.append(tt)
 

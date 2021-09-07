@@ -1,11 +1,13 @@
 import permutation
 import fK
+import genKeys
 
-def f(t,keys,type):
+def f(t,raw_key,type,triple=False):
     orderIP=[2,6,3,1,4,8,5,7]
     orderIP_1=[4,1,3,5,7,2,8,6]  
-    #type=1 encryption
-    #type=0 decryption
+
+    keys=genKeys.gen2keys(raw_key)
+
     if type==1:
         key1=keys['key1']
         key2=keys['key2']
