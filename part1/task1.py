@@ -4,17 +4,12 @@ import decipher
 import numpy as np
 
 # input ciphertext
-fhand=open('task1_ct.txt')
+fhand=open('testct.txt')
 s=fhand.read()
 s=autokey.del_sp(s)
 
-key='AAAAAA'
-for i in range(0,6):
-    count=decipher.f(s,key,i)
+s=s[:20]
 
-    # sort
-    
+key='AAAA'
 
-
-    key=max[0]
-    print(max)
+decipher.f(s,key)
