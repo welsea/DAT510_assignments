@@ -4,7 +4,8 @@ def quad():
     quadgramD={}
     for line in file:
         quadgramL=line.split(' ')
-        quadgramD[quadgramL[0]]=int(quadgramL[1][:-1])
+        if int(quadgramL[1][:-1]) > 500:
+            quadgramD[quadgramL[0]]=int(quadgramL[1][:-1])
 
     quadgram=list(quadgramD.keys())
 

@@ -1,19 +1,20 @@
 import autokey
 import quadgram
-import match
+import decipher
+import numpy as np
 
 # input ciphertext
 fhand=open('task1_ct.txt')
 s=fhand.read()
 s=autokey.del_sp(s)
 
-quad=quadgram.quad()
+key='AAAAAA'
+for i in range(0,6):
+    count=decipher.f(s,key,i)
 
-# turn quadgram into number
-quadgramNum=[]
-for i in range(0,len(quad)):
-    quadgramNum.append(autokey.turn2num(quad[i]))
+    # sort
+    
 
 
-max=match.f(s[:8])
-print(max)
+    key=max[0]
+    print(max)
