@@ -33,7 +33,7 @@ def f(ct):
     result=[]
     for i in range(0,26):
         ptSameChild=[]
-        for j in range(0,len(ct)-len(child)):
+        for j in range(0,len(ct)-len(child)+1):
             pt=[]
             for k in range(0,len(child)):
                 if ct[j+k] < child[k]:
@@ -41,47 +41,13 @@ def f(ct):
                 else:
                     pt.append(ct[j+k] - child[k])
             ptSameChild.append(pt)
+            # print(i,'---------',''.join(autokey.turn2char(pt)))
         result.append(ptSameChild)
         # move to next key
         child[4]+=1
 
 
-
-    for i in range(0,26):
-        pt=[]
-        print('child key------------',child)
-        for j in range(0,len(ct)-7):
-            ptt=[]
-            for k in range(0,len(child)):
-                # try:
-                if j+k < len(ct):
-                    if ct[j+k] < child[k]:
-                        ptt.append((ct[j+k]+26)-child[k])
-                        # print((ct[j+k]+26)-child[k],end=' ')
-                    else:
-                        ptt.append(ct[j+k]-child[k])
-                        # print(ct[j+k]-child[k],end=' ')
-                print('ciphertext----------',ct[j+k:])    
-                    
-            print()
-                # except IndexError:
-                #     print('j+k:',j+k)
-                #     print(ct[7])
-                #     exit()
-            # pt.append(ptt)
-            print('plaintext------------',ptt)
-            pt.append(ptt)
-        child[4]=firstParent[0]+1
-        # print('!!!pt---------',pt)
-    result.append(pt)
-    print(result[0])
-
-
-    # result_char=[]
-    # # # count=[]
-    match
-        
-
+    #match
     # for i in range(0,len(result)):
     #     # count_c=[]
     #     result_quad=[]

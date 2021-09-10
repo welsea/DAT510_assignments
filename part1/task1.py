@@ -15,5 +15,5 @@ for i in range(0,len(quad)):
     quadgramNum.append(autokey.turn2num(quad[i]))
 
 
-max=match.f(s[:10])
+max=match.f(s[:8])
 print(max)
