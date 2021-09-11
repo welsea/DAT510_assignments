@@ -6,5 +6,6 @@ fhand=open('task1_ct.txt')
 s=fhand.read()
 s=autokey.del_sp(s)
 
-ss=decipher.f(s[:12])
-print(ss)
+result=decipher.f(s)
+for i in range(0,len(result)):
+    print(result[i])

@@ -58,35 +58,17 @@ def f(ct):
     # generate all keys
     childKey=genChildKey()
 
-    all={}
+    result=['key',0,'plaintext']
     # generate plaintext
     for i in range(0,len(childKey)):
         pt=genPossiblePt(childKey[i],ct)
         pt=''.join(autokey.turn2char(pt))
         key=''.join(autokey.turn2char(childKey[i]))
-        all[key]=pt
-
-    # match quadgram and count
-    allPt=list(all.values())
-    allKey=list(all.keys())
-
-    count={}
-    for i in range(0,len(allKey)):
-        key=allKey[i]
-        num=match(all[key])
-        count[key]=num
-        # snum='num:  '+str(num)
-        # print(skey)
-        print(num)
+        # plaintext match to quadgram
+        num=match(pt)
+        if num>result[1]:
+            result[0]=key
+            result[1]=num
+            result[2]=pt
     
-
-    # max
-    countNum=list(count.values())
-    countKeys=list(count.keys())
-    m=max(countNum)
-    maxIndex=countNum.index(m)
-    maxKey=countKeys[maxIndex]
-    maxPt=all[maxKey]
-
-    ss='key:'+maxKey+'  num:'+str(m)+'\n'+maxPt
-    return ss
+    return result
