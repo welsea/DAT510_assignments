@@ -8,8 +8,5 @@ fhand=open('testct.txt')
 s=fhand.read()
 s=autokey.del_sp(s)
 
-s=s[:20]
-
-key='AAAA'
-
-decipher.f(s,key)
+ss=decipher.f(s,6)
+print(ss)
