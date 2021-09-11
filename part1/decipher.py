@@ -5,11 +5,6 @@ quad=quadgram.quad()
 
 def genChildKey():
     all=[]
-    # for i in range(0,length):
-    #     for j in range(0,26):
-    #         child[i]=j
-    #         all.append(child)
-
     for i in range(0,26):
         for j in range(0,26):
             for k in range(0,26):
@@ -34,13 +29,6 @@ def match(pt):
     # print('len ptquad:',len(ptQuad))
     x=ptQuad.intersection(quad)
     num=len(x)
-    # for i in range(0,len(ptQuad)):
-    #     if ptQuad[i] in quad:
-    #         num+=1
-    #         # print(ptQuad[i],'----',quad.index(ptQuad[i]))
-    #     else:
-    #         num+=0
-    # print(num)
     return num
 
 def genPossiblePt(key,ct):
@@ -64,11 +52,11 @@ def genPossiblePt(key,ct):
     return pt
 
 
-def f(ct,length):
+def f(ct):
     ct=autokey.turn2num(ct)
 
     # generate all keys
-    childKey=genChildKey(length)
+    childKey=genChildKey()
 
     all={}
     # generate plaintext
@@ -77,26 +65,19 @@ def f(ct,length):
         pt=''.join(autokey.turn2char(pt))
         key=''.join(autokey.turn2char(childKey[i]))
         all[key]=pt
-        print('key---------------------------------------',key)
-        print('plaintext--===============================',pt)
 
     # match quadgram and count
     allPt=list(all.values())
     allKey=list(all.keys())
-    # fa=open('textct.txt','a')
+
     count={}
     for i in range(0,len(allKey)):
         key=allKey[i]
         num=match(all[key])
         count[key]=num
-
-        # write in textct.txt
-        # skey='key:  '+key
-        snum='num:  '+str(num)
+        # snum='num:  '+str(num)
         # print(skey)
-        print(snum)
-        # s=skey+'\n'+snum+'\n'
-        # fa.write(s)
+        print(num)
     
 
     # max
@@ -109,16 +90,3 @@ def f(ct,length):
 
     ss='key:'+maxKey+'  num:'+str(m)+'\n'+maxPt
     return ss
-    # fa.write(ss)
-    # fa.close()
-
-
-# pt='CRYPTOGRAPHYCANBESTRONGORWEAKCRYPTOGRAPHICSTRENG'
-# match(pt)
-
-# fhand=open('testct.txt')
-# s=fhand.read()
-# s=autokey.del_sp(s)
-
-# ss=f(s,6)
-# print(ss)

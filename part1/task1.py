@@ -1,12 +1,10 @@
 import autokey
-import quadgram
 import decipher
-import numpy as np
 
 # input ciphertext
-fhand=open('testct.txt')
+fhand=open('task1_ct.txt')
 s=fhand.read()
 s=autokey.del_sp(s)
 
-ss=decipher.f(s,6)
+ss=decipher.f(s[:12])
 print(ss)
