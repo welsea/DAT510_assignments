@@ -3,16 +3,6 @@ import quadgram
 
 quad=quadgram.quad()
 
-def genChildKey():
-    for i in range(0,26):
-        for j in range(0,26):
-            for k in range(0,26):
-                for l in range(0,26):
-                    for z in range(0,26):
-                        for d in range(0,26):
-                            # print([i,j,k,l,z,d])
-                            return [i,j,k,l,z,d]
-
 # divide ct/pt into quadgram
 def genQuad(t):
     quadPt=set()
@@ -79,25 +69,6 @@ def f(ct):
                                 result[1]=num
                                 print(num)
                                 result[2]=pt
-
-    # for k in range(0,26):
-    #     for l in range(0,26):
-    #         for z in range(0,26):
-    #             for d in range(0,26):
-    #                 # print([i,j,k,l,z,d])
-    #                 childKey=[k,l,z,d]
-    #                 key=''.join(autokey.turn2char(childKey))
-
-    #                 pt=genPossiblePt(childKey,ct)
-
-    #                 # plaintext match to quadgram
-    #                 num=match(pt)
-    #                 if num>result[1]:
-    #                     pt=''.join(autokey.turn2char(pt))
-    #                     key=''.join(autokey.turn2char(childKey))
-    #                     result[0]=key
-    #                     result[1]=num
-    #                     result[2]=pt
 
     
     return result
