@@ -2,7 +2,7 @@ import permutation
 import fK
 import genKeys
 
-def f(t,raw_key,type,triple=False):
+def f(t,raw_key,type):
     orderIP=[2,6,3,1,4,8,5,7]
     orderIP_1=[4,1,3,5,7,2,8,6]  
 

@@ -23,22 +23,14 @@ def match(pt):
 
 def genPossiblePt(key,ct):
     pt=[]
-    addKey=key
+    addKey=key.copy()
     for i in range(0,len(ct)):
-        if i < len(key):
-            if ct[i]<key[i]:
-                ptt=ct[i]+26-key[i]
-            else:
-                ptt=ct[i]-key[i]
-            addKey.append(ptt)
-            pt.append(ptt)
+        if ct[i]<addKey[i]:
+            ptt=ct[i]+26-addKey[i]
         else:
-            if ct[i]<addKey[i]:
-                ptt=ct[i]+26-key[i]
-            else:
-                ptt=ct[i]-key[i]
-            pt.append(ptt)
-            addKey.append(ptt)
+            ptt=ct[i]-addKey[i]
+        pt.append(ptt)
+        addKey.append(ptt)
     return pt
 
 

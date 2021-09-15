@@ -1,11 +1,10 @@
 import re
-
+import autokey
 # count the time that words appearance 
 def word_count(ct,n):
     word=''
     count=''
     group={}
-
     for i in range(0,len(ct)-1):
         word=ct[i:i+n]
         count=len(re.findall(word,ct))
@@ -38,3 +37,8 @@ def kasiski(ct,num):
         print(i,end='     ')
         print(group[i],end='         ')
         print(','.join(str(x) for x in location[i]))    
+
+fhand=open('task1_ct.txt')
+s=fhand.read()
+s=autokey.del_sp(s)
+kasiski(s,3)

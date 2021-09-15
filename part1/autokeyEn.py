@@ -1,10 +1,10 @@
 import autokey
 
-fhand=open('testpt.txt')
+fhand=open('testct.txt')
 s=fhand.read()
 s=autokey.del_sp(s)
 ct=autokey.turn2num(s)
-key='DATF'
+key='DAT'
 key=autokey.turn2num(key)
 key=key+ct[:len(ct)-len(key)]
 pt=[]
@@ -16,6 +16,6 @@ for i in range(0,len(ct)):
         pt.append(ptt)
 pt=autokey.turn2char(pt)
 pt=''.join(pt)
-f = open("testct.txt", "a")
+f = open("testct2.txt", "a")
 f.write(pt)
 f.close()
