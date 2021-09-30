@@ -33,5 +33,3 @@ for i in table:
     for j in i:
         print(j,end='        ')
     print()   
-
-

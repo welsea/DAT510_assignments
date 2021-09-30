@@ -15,8 +15,8 @@ def genQuad(t):
 
 def match(pt):
     num=0
+    # divided the plaintext into quadgrams
     ptQuad=genQuad(pt)
-    # print('len ptquad:',len(ptQuad))
     x=ptQuad.intersection(quad)
     num=len(x)
     return num
@@ -48,8 +48,6 @@ def f(ct):
                         for d in range(0,26):
                             # print([i,j,k,l,z,d])
                             childKey=[i,j,k,l,z,d]
-                            key=''.join(autokey.turn2char(childKey))
-
                             pt=genPossiblePt(childKey,ct)
 
                             # plaintext match to quadgram
@@ -59,7 +57,6 @@ def f(ct):
                                 key=''.join(autokey.turn2char(childKey))
                                 result[0]=key
                                 result[1]=num
-                                print(num)
                                 result[2]=pt
 
     
