@@ -35,7 +35,8 @@ def add(a,p,P,Q):
        # perform multiplication with the inverse modulo p
        s = (Q[1]-P[1]) * inv(Q[0]-P[0], p)
    else:
-       s = ((3*(P[0]*P[0])+a)%p) ** (2*P[1])
+       ###change###
+       s = ((3*(P[0]*P[0])+a)%p) * inv(2*P[1],p)
 
    #Calculate Third Intersection
    x = s*s - P[0] - Q[0]
