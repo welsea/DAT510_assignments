@@ -40,45 +40,6 @@ def G(a,p,g1,g2):
 
     return (x,y)
 
-
-# use ellipic curve to generate a cyclic group for DH key exchange
-def CyclicGroup(a,p,g):
-    cy=list()
-    cy.append(g)
-    r=()+g
-    r=G(a,p,g,r)
-    while r not in cy:
-        cy.append(r)
-        r=G(a,p,r,g)
-    return cy
-    
-
-# diffie-hellman key exchange, use x coordnates in cyclic groups
-def exchange(n,cy):
-    #alic choose a private key
-    print("Alice choose a private key.")
-    pA=121
-    # pA=random.randint(0,n)
-
-    #bob choose a private key
-    print("Bob choose a private key.")
-    pB=203
-    # pB=random.randint(0,n)
-
-    #calculate the public key
-    pbA=cy[pA-1][0]
-    pbB=cy[pB-1][0]
-    print("Alice\'s public key:",pbA)
-    print("Bob\'s public key:",pbB)
-
-    #calculate the K
-    if pA*pB > n:
-        k=cy[(pA*pB)%n-1][0]
-    else:
-        k=cy[pA*pB-1][0]
-
-
-
 def curve():   
     ## get a ellipic curve
     # a,b,p,g
@@ -96,3 +57,76 @@ def curve():
     g=tuple(gl)
 
     return a,b,p,g
+
+
+# use ellipic curve to generate a cyclic group for DH key exchange
+def CyclicGroup(a,p,g):
+    cy=list()
+    cy.append(g)
+    r=()+g
+    r=G(a,p,g,r)
+    while r not in cy:
+        cy.append(r)
+        r=G(a,p,r,g)
+    return cy
+    
+
+# diffie-hellman key exchange, use x coordnates in cyclic groups
+def priavteKey(n):
+    pk=random.randint(0,n)
+    return pk
+
+
+def publicKey(pk,cy):
+    yk=cy[pk-1][0]
+    return yk
+
+def sharedKey(a,b,n,cy):
+    if a*b > n:
+        k=cy[(a*b)%n-1][0]    
+    else:
+        k=cy[a*b-1][0]
+    return k
+
+def exchange(n,cy):
+    #alic choose a private key
+    print("Alice choose a private key.")
+    pA=121
+    # pA=privateKey(n)
+
+    #bob choose a private key
+    print("Bob choose a private key.")
+    pB=203
+    # pB=privateKey(n)
+
+    #calculate the public key
+    pbA=publicKey(pA,cy)
+    pbB=publicKey(pB,cy)
+
+    print("Alice\'s public key:",pbA)
+    print("Bob\'s public key:",pbB)
+
+    #calculate the K
+    k=sharedKey(pA,pB,n,cy)
+    print("The shared key of Alice and bob:",k)
+    
+    return k
+
+def dh():
+    # c=curve()
+    ###---test-----###
+    c=(0,-4,211,(2,2))
+    print("Curve: y^2 = x^3 + %dx + %d (mod %d)" % (c[0],c[1],c[2]))
+    print("Generator:",c[3])
+    cy=CyclicGroup(c[0],c[2],c[3])
+    # print("Clyclic group:")
+    # for i in range(0,len(cy)):
+    #     print(i+1,":",cy[i])
+    ###---test-----###
+
+    n=len(cy)
+    # the number of sub-sequence of cyclic group
+    print("n=",n)
+    k=exchange(n,cy)
+
+    return k
