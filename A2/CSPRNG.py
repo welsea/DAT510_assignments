@@ -1,66 +1,58 @@
-
 # rc4
+import random
+
+
 def initialS():
-    s = list()
+    S = list()
     i = 0
-    while i < 255:
-        i += 1
-        s.append(i)
-    return s
+    for i in range(256):
+        S.append(i)
+    return S
 
 
-def initialT(seed):
-    t = list()
-    i = j = 0
-    while i < 255:
-        if j == len(seed):
-            j = 0
-        t.append(int(seed[j]))
-        i += 1
-        j += 1
-    return t
+def initialT(K):
+    n = len(K)
+    T = list()
+    for i in range(256):
+        T.append(K[i % n])
+    return T
 
 
-def scheduling(s, t):
+def scheduling(S, T):
     j = 0
-    for i in range(0, 255):
-        j = (j+s[i]+t[i]) % 256
-        # swap s[i], s[j]
-        temp = s[i]
-        s[i] = s[j]
-        s[j] = temp
-    return s
+    for i in range(256):
+        j = (j+S[i]+T[i]) % 256
+        # swap S[i], S[j]
+        S[i], S[j] = S[j], S[i]
+    return S
 
 
-def stream(s, n):
-    i = j = 0
-    x = 0
-    while x < n:
-        x += 1
+def keyStream(S):
+    i = 0
+    j = 0
+    n = random.randint(0, 256)
+    for r in range(n):
         i = (i+1) % 256
-        j = (j+s[i]) % 256
-        # swap s[i], s[j]
-        temp = s[i]
-        s[i] = s[j]
-        s[j] = temp
-        t = (s[i]+s[j]) % 256
-        k = s[t]
+        j = (j+S[i]) % 256
+        # swap S[i], S[j]
+        S[i], S[j] = S[j], S[i]
+        t = (S[i]+S[j]) % 256
+        k = S[t]
     return k
 
 
 def rc4(Kab):
     seed = list()
     for i in str(Kab):
-        seed.append(i)
+        seed.append(int(i))
 
     # initialization S array and Key array
-    s = initialS()
-    t = initialT(seed)
+    S = initialS()
+    T = initialT(seed)
 
     # Initial permutation of S
-    s = scheduling(s, t)
+    S = scheduling(S, T)
 
     # Stream generation
-    k = stream(s, len(seed))
-
+    k = keyStream(S)
     return k

@@ -1,8 +1,5 @@
 import random
-
-
 def e(n, p):
-    ###### change #####
     x = yy = 0
     y = xx = 1
     while p:
