@@ -1,8 +1,6 @@
 # rc4
-import random
-
-
 def initialS():
+    # S contain 256 items, from 0 to 255.
     S = list()
     i = 0
     for i in range(256):
@@ -11,9 +9,11 @@ def initialS():
 
 
 def initialT(K):
+    # T contain 256 items. 
     n = len(K)
     T = list()
     for i in range(256):
+        # Repeat of seed.
         T.append(K[i % n])
     return T
 
@@ -27,10 +27,9 @@ def scheduling(S, T):
     return S
 
 
-def keyStream(S):
+def keyStream(S, n):
     i = 0
     j = 0
-    n = random.randint(0, 256)
     for r in range(n):
         i = (i+1) % 256
         j = (j+S[i]) % 256
@@ -54,5 +53,5 @@ def rc4(Kab):
     S = scheduling(S, T)
 
     # Stream generation
-    k = keyStream(S)
+    k = keyStream(S, Kab)
     return k
