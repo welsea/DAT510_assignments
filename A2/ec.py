@@ -45,13 +45,15 @@ def G(a, p, g1, g2):
     return (x, y)
 
 # use ellipic curve to generate a cyclic group for DH key exchange
+
+
 def CyclicGroup():
     c = (0, -4, 211, (2, 2))
     a = c[0]
     p = c[2]
     g = c[3]
     cy = list()
-    cyx=list()
+    cyx = list()
     cy.append(g)
     cyx.append(g[0])
     r = ()+g

@@ -9,7 +9,7 @@ def initialS():
 
 
 def initialT(K):
-    # T contain 256 items. 
+    # T contain 256 items.
     n = len(K)
     T = list()
     for i in range(256):

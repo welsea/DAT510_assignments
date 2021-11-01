@@ -54,9 +54,8 @@ def alice():
 def getPub():
     return str(pu)
 
+
 # send the encrypt message
-
-
 @app.route("/sendmsg")
 def sendmsg():
     des = DES.CIPHER(sk, msg, 0)
@@ -66,7 +65,7 @@ def sendmsg():
 
 @app.route("/getmsg")
 def getmsg():
-    # get the encrypt message from Alice
+    # get the encrypt message
     ct = requests.get('http://127.0.0.1:5000/sendmsg').text
     # decrypt the message
     des = DES.CIPHER(sk, ct, 1)
@@ -75,4 +74,4 @@ def getmsg():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80,debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)

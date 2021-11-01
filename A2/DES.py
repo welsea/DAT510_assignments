@@ -26,28 +26,25 @@ class CIPHER:
         i = int.from_bytes(self.ct, byteorder=sys.byteorder)
         self.ctbi = bin(i)
 
-
     # turn cipher text into bytes
     def convert2Bytes(self):
         i = int(self.msg, 2)
         self.ctby = (i).to_bytes(8, byteorder='little')
 
-
     def encrypt(self):
         while len(self.msg) % 8 != 0:
             self.msg += ' '
         self.ct = self.d.encrypt(self.msg.encode('utf-8'))
-        
 
     def decrypt(self):
         try:
             self.pt = self.d.decrypt(self.ctby).decode()
             self.pt.rstrip(' ')
         except:
-            self.pt='Refresh the website please.'
-        
+            self.pt = 'Refresh the website please.'
 
     # return the cipher text
+
     def getCT(self):
         return self.ctbi
 

@@ -21,7 +21,7 @@ seed = k
 k = CSPRNG.rc4(seed)  # CSPRNG-RC4
 print("The key that will be used for encryption and decryption:", k)
 pt = "Hi,Bob!"
-print("Alice send:",pt)
+print("Alice send:", pt)
 # use DES to encrypt
 des = DES.CIPHER(k, pt, 0)
 ct = des.getCT()
