@@ -7,6 +7,6 @@
 
 ## A2
 - ECDH
-- RC4(pesudo-random number generator)
+- RC4(pseudo-random number generator)
 - DES(pycryptodome)
 - simple webserver send/recieve message
